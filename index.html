@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine's Day</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffb6c1, #ffe4e1);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      padding-top: 60px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 10px red, 0 0 20px pink;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      background: #ff69b4;
+      border: none;
+      border-radius: 20px;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff1493;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff1493;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+
+    .message {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.4rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #fff8f8;
+      text-shadow: 0 0 5px #ff69b4;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 5s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -20px;
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💘 Happy Valentine's Day 💘</h1>
+
+  <button class="btn" onclick="showMessage('msg1')">What I want you to know</button>
+  <button class="btn" onclick="showMessage('msg2')">Why I love you</button>
+  <button class="btn" onclick="showMessage('msg3')">Why I will never leave you</button>
+
+  <div id="msg1" class="message">
+    You are one of the kindest, most genuine people I've ever known.  
+    I want you to know that every time you smile, the world gets brighter.
+  </div>
+
+  <div id="msg2" class="message">
+    I love you not just because you always make me feel so happy. I also love you very much because of who you are. And you never left me over these 5 years. Thank you.
+  </div>
+
+  <div id="msg3" class="message">
+    Because loyalty to you isn’t a promise — it’s something I *believe in.*  
+    Even when things get hard, I’ll be right here. Always.
+  </div>
+
+  <!-- Floating hearts -->
+  <script>
+    function showMessage(id) {
+      const messages = document.querySelectorAll('.message');
+      messages.forEach(msg => msg.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
